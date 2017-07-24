@@ -18,8 +18,8 @@
 }
 
 #pano {
-  width: 200px;
-  height: 200px;
+    width: 200px;
+    height: 200px;
 }
 
 #innerHTML {
@@ -40,6 +40,13 @@
 	margin-right: 15px;
 }
 
+.menu_button {
+    padding: 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
+}
 
 @media screen and (max-width: 740px) {
 
@@ -53,8 +60,8 @@
 		text-align: left;
 		margin-left: 0px;
 	}
-	.map-full{
-		height:92.5%;
+	.map-full {
+		height: 92.5%;
 	}
 
 }
