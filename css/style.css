@@ -1,0 +1,60 @@
+.map-full {
+    bottom:0px;
+    height: 92.5%;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    width:100%;
+}
+
+.map-full.map-icon {
+    left: 3.15%;
+    overflow-y: scroll;
+}
+
+.map-full.map-menu {
+    left: 19.9%;
+    overflow-y: scroll;
+}
+
+#pano {
+  width: 200px;
+  height: 200px;
+}
+
+#innerHTML {
+    font-family: 'Lato', Arial, sans-serif;
+    background: white;
+    color: #5f6f81;
+    list-style: none;
+    text-transform: none;
+    font-weight: 300;
+}
+
+.space {
+	margin-left: 15px;
+}
+
+.back {
+	text-align: right;
+	margin-right: 15px;
+}
+
+
+@media screen and (max-width: 740px) {
+
+	.space {
+		word-wrap: break-word;
+		word-break: break-all;
+        margin-left: 0px;
+	}
+
+	.back {
+		text-align: left;
+		margin-left: 0px;
+	}
+	.map-full{
+		height:92.5%;
+	}
+
+}
