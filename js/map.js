@@ -107,6 +107,7 @@ var markers = ko.observableArray();
 var placeMarkers = ko.observableArray();
 var areaList = ko.observableArray(['New York', 'Manhattan', 'Queens', 'Brooklyn', 'Bronx']);
 var selectedArea = ko.observable('New York');
+var previousMarker = null;
 
 //******************************************************************************************************//
 
@@ -171,11 +172,20 @@ var viewModel = function(){
     };
 
     this.refresh = function(restaurant){
+        if (previousMarker != null){
+            previousMarker.setIcon(defaultIcon);
+            closeInfowinsow(previousMarker, largeInfowindow);
+        }
         populateInfoWindow(restaurant, largeInfowindow);
         restaurant.setIcon(clickIcon);
+        previousMarker = restaurant;
     };
 
     this.back = function(){
+        if (previousMarker != null){
+            previousMarker.setIcon(defaultIcon);
+            closeInfowinsow(previousMarker, largeInfowindow);
+        }
         hideMarkers(placeMarkers);
         placeMarkers.removeAll();
         filter_loc('New York');
@@ -212,10 +222,10 @@ function populateInfoWindow(marker, infowindow) {
           var location_key;
           var lat = marker.getPosition().lat();
           var lng = marker.getPosition().lng();
-          var url_lockey = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=uWLTY8xHMUhISAr7YUk3JPnjPlnXdJEA&q="
+          var url_lockey = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=LpGkZ8E6XJh7XZiydMXGgDJqJ2yFKawE&q="
                       + lat +"%2C" + lng;
           var url_weather1 = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/";
-          var apikey = "?apikey=uWLTY8xHMUhISAr7YUk3JPnjPlnXdJEA&details=True";
+          var apikey = "?apikey=LpGkZ8E6XJh7XZiydMXGgDJqJ2yFKawE&details=True";
           var inner;
           $.ajax({
               url:url_lockey,
@@ -285,6 +295,10 @@ function populateInfoWindow(marker, infowindow) {
           }
 
         }
+      }
+
+      function closeInfowinsow(marker, infowindow){
+          infowindow.close(map, marker);
       }
 
       function makeMarkerIcon(markerColor) {
